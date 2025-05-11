@@ -983,7 +983,10 @@
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimTypes.h" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> main
 =======
 >>>>>>> main
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\UAnimDataModel.h" />
@@ -992,6 +995,9 @@
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\UAnimSequenceBase.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\UAnimInstance.h" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 =======
 >>>>>>> main

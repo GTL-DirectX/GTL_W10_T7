@@ -56,12 +56,15 @@ void USkeletalMeshComponent::TestFBXSkeletalMesh()
     // 1) FBX로부터 USkeletalMesh 생성
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     FString FbxPath(TEXT("Assets/FBX/XBot.fbx"));
     //FString FbxPath(TEXT("Assets/FBX/Macarena.fbx"));
     //FString FbxPath(TEXT("Assets/FBX/nathan3.fbx"));
 
 =======
+=======
+>>>>>>> main
 =======
 >>>>>>> main
     FString FbxPath(TEXT("Assets/fbx/Twerk.fbx"));

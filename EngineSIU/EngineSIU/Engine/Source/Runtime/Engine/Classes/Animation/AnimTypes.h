@@ -3,6 +3,11 @@
 #include "Define.h"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include "Container/Map.h"
+#include "Core/Math/Quat.h"
+>>>>>>> main
 =======
 #include "Container/Map.h"
 #include "Core/Math/Quat.h"
@@ -34,7 +39,10 @@ struct FAnimNotifyEvent
 };
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> main
 =======
 >>>>>>> main
 
@@ -72,6 +80,9 @@ struct FAnimationCurveData
     TMap<FName, TArray<bool>> BoolCurves;    // 이름별 불린 커브 데이터
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 =======
 >>>>>>> main

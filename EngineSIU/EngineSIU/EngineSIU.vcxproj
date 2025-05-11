@@ -447,8 +447,13 @@
   <ItemGroup>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimTypes.h" />
     <ClInclude Include="Engine\Source\Runtime\Launch\BoneDefine.h" />
+=======
+    <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimSequence.h" />
+    <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimTypes.h" />
+>>>>>>> main
 =======
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimSequence.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimTypes.h" />
