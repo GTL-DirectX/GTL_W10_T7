@@ -16,6 +16,15 @@ USkeletalMeshComponent::USkeletalMeshComponent()
 {
 }
 
+void USkeletalMeshComponent::InitializeAnimInstance()
+{
+    if (!AnimInstance)
+    {
+        AnimInstance = FObjectFactory::ConstructObject<UAnimInstance>(nullptr);
+        AnimInstance->Initialize(this);
+    }
+}
+
 void USkeletalMeshComponent::GenerateSampleData()
 {
 }
@@ -45,17 +54,35 @@ void USkeletalMeshComponent::TestSkeletalMesh()
 void USkeletalMeshComponent::TestFBXSkeletalMesh()
 {
     // 1) FBX로부터 USkeletalMesh 생성
+<<<<<<< HEAD
 
     FString FbxPath(TEXT("Assets/FBX/XBot.fbx"));
     //FString FbxPath(TEXT("Assets/FBX/Macarena.fbx"));
     //FString FbxPath(TEXT("Assets/FBX/nathan3.fbx"));
 
+=======
+    FString FbxPath(TEXT("Assets/fbx/Twerk.fbx"));
+    //FString FbxPath(TEXT("Contents/FbxTest/nathan3.fbx"));
+>>>>>>> main
     USkeletalMesh* LoadedMesh = FResourceManager::LoadSkeletalMesh(FbxPath);
     if (!LoadedMesh)
     {
         UE_LOG(LogLevel::Warning, TEXT("FBX 로드 실패: %s"), *FbxPath);
         return;
     }
+
+    UAnimSequence* AnimSequence = FResourceManager::LoadAnimationSequence(FbxPath);
+    if (!AnimSequence)
+    {
+        UE_LOG(LogLevel::Warning, TEXT("애니메이션 로드 실패, 스켈레톤만 표시합니다."));
+        UpdateAnimation();
+        return;
+    }
+
+    InitializeAnimInstance();
+
+    // 5) AnimInstance에 애니메이션 시퀀스 설정
+    AnimInstance->SetAnimSequence(AnimSequence);
 
     // 2) SkeletalMeshComponent에 세팅
     SetSkeletalMesh(LoadedMesh);
