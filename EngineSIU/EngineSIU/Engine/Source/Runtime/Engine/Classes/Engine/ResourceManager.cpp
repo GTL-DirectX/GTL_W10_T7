@@ -11,6 +11,8 @@
 #include "DirectXTK/Include/DDSTextureLoader.h"
 #include "Engine/FObjLoader.h"
 #include "UObject/ObjectFactory.h"
+#include <Animation/AnimDataModel.h>
+#include <Animation/AnimSequence.h>
 
 #pragma region Texture
 void FResourceManager::Initialize(FRenderer* renderer, FGraphicsDevice* device)
@@ -508,27 +510,18 @@ USkeletalMesh* FResourceManager::LoadSkeletalMesh(const FString& FilePath)
         return SkeletalMeshMap[WideFilePath];
     }
 
-    FSkeletalMeshRenderData* SkeletalMeshData = LoadSkeletalMeshAsset(FilePath);
+    USkeletalMesh* SkeletalMeshData = LoadSkeletalMeshAsset(FilePath);
 
     if (SkeletalMeshData == nullptr) return nullptr;
 
-    SkeletalMeshData->ObjectName = WideFilePath;
+    SkeletalMeshData->GetRenderData()->ObjectName = WideFilePath;
 
-    USkeletalMesh* SkeletalMesh = GetSkeletalMesh(SkeletalMeshData->ObjectName);
-    if (SkeletalMesh != nullptr)
-    {
-        return SkeletalMesh;
-    }
+    SkeletalMeshMap.Add(WideFilePath, SkeletalMeshData);
 
-    SkeletalMesh = FObjectFactory::ConstructObject<USkeletalMesh>(nullptr);
-    SkeletalMesh->SetData(SkeletalMeshData);
-
-    SkeletalMeshMap.Add(WideFilePath, SkeletalMesh);
-
-    return SkeletalMesh;
+    return SkeletalMeshData;
 }
 
-FSkeletalMeshRenderData* FResourceManager::LoadSkeletalMeshAsset(const FString& PathFileName)
+USkeletalMesh* FResourceManager::LoadSkeletalMeshAsset(const FString& PathFileName)
 {
     // FWString BinaryPath = (PathFileName + ".bin").ToWideString();
     // if (std::ifstream(BinaryPath).good())
@@ -539,20 +532,19 @@ FSkeletalMeshRenderData* FResourceManager::LoadSkeletalMeshAsset(const FString& 
     //         return NewStaticMesh;
     //     }
     // }
+    USkeletalMesh* LoadedSkeletalMesh = FFbxLoader::LoadFBXSkeletalMeshAsset(PathFileName);
 
-    FSkeletalMeshRenderData* NewSkeletalMesh = nullptr;
-
-    FFbxLoader::LoadFBXSkeletalMeshAsset(PathFileName, NewSkeletalMesh);
+    FSkeletalMeshRenderData* NewSkeletalMeshRenderData = LoadedSkeletalMesh->GetRenderData();
 
     // Material
-
-    for (auto Material : NewSkeletalMesh->Materials) {
+    for (auto Material : NewSkeletalMeshRenderData->Materials) 
+    {
         CreateMaterial(Material);
     }
 
     // SaveStaticMeshToBinary(BinaryPath, *NewStaticMesh);
 
-    return NewSkeletalMesh;
+    return LoadedSkeletalMesh;
 }
 
 USkeletalMesh* FResourceManager::GetSkeletalMesh(const FWString& FilePath)
@@ -560,8 +552,48 @@ USkeletalMesh* FResourceManager::GetSkeletalMesh(const FWString& FilePath)
     return SkeletalMeshMap[FilePath];
 }
 
-#pragma endregion
 #pragma region Material
+
+#pragma region Animation
+UAnimSequence* FResourceManager::LoadAnimationSequence(const FString& FilePath)
+{
+    FWString WideFilePath = FilePath.ToWideString();
+
+    // 이미 로드된 애니메이션이 있는지 확인
+    if (AnimSequenceMap.Contains(WideFilePath))
+    {
+        return AnimSequenceMap[WideFilePath];
+    }
+
+    // AnimDataModel 생성
+    UAnimDataModel* AnimDataModel = FObjectFactory::ConstructObject<UAnimDataModel>(nullptr);
+
+    // FBX에서 애니메이션 데이터 로드
+    bool bSuccess = FFbxLoader::LoadFBXAnimationAsset(FilePath, AnimDataModel);
+    if (!bSuccess || AnimDataModel->GetBoneAnimationTracks().Num() == 0)
+    {
+        UE_LOG(LogLevel::Warning, TEXT("애니메이션 데이터 로드 실패: %s"), *FilePath);
+        return nullptr;
+    }
+
+    // UAnimSequence 생성 및 설정
+    UAnimSequence* AnimSequence = FObjectFactory::ConstructObject<UAnimSequence>(nullptr);
+
+    // AnimSequence에 AnimDataModel 설정
+    AnimSequence->SetDataModel(AnimDataModel);
+   // AnimSequence->SetName(FilePath);
+
+    // 맵에 추가
+    AnimSequenceMap.Add(WideFilePath, AnimSequence);
+
+    return AnimSequence;
+}
+
+UAnimSequence* FResourceManager::GetAnimationSequence(const FWString& AnimationKey)
+{
+    return AnimSequenceMap.Contains(AnimationKey) ? AnimSequenceMap[AnimationKey] : nullptr;
+}
+#pragma endregion
 
 UMaterial* FResourceManager::CreateMaterial(FObjMaterialInfo materialInfo)
 {

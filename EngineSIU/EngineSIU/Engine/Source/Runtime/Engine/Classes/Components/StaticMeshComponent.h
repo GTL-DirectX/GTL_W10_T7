@@ -2,7 +2,7 @@
 #include "Components/MeshComponent.h"
 #include "Mesh/StaticMeshRenderData.h"
 
-#include "Engine/Asset/StaticMeshAsset.h"
+#include "Engine/Classes/Asset/StaticMeshAsset.h"
 
 class UStaticMeshComponent : public UMeshComponent
 {

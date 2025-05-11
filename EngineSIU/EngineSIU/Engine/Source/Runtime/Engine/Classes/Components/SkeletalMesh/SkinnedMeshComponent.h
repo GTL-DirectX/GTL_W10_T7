@@ -1,4 +1,4 @@
-#pragma once
+    #pragma once
 
 #include "UObject/Object.h"
 #include "UObject/ObjectMacros.h"
@@ -25,7 +25,7 @@ public:
 #pragma region Skeletal
     void SetSkeletalMesh(USkeletalMesh* InMesh);
     USkeletalMesh* GetSkeletalMesh() const { return SkeletalMesh; }
-    void UpdateAnimation();
+    void UpdateSkinnedPositions();
 #pragma endregion
 
     void SetselectedSubMeshIndex(const int& value) { selectedSubMeshIndex = value; }

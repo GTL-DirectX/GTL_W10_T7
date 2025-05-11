@@ -46,8 +46,8 @@
                     "ComponentClass": "USkeletalMeshComponent",
                     "ComponentID": "USkeletalMeshComponent_134",
                     "Properties": {
-                        "AABB_max": "X=0.000 Y=0.000 Z=0.000",
-                        "AABB_min": "X=0.000 Y=0.000 Z=0.000",
+                        "AABB_max": "X=96.463 Y=199.254 Z=33.858",
+                        "AABB_min": "X=-96.461 Y=-0.209 Z=-24.923",
                         "AttachParentID": "StaticMeshComponent_0",
                         "ComponentClass": "USkeletalMeshComponent",
                         "ComponentName": "USkeletalMeshComponent_134",
@@ -56,6 +56,7 @@
                         "RelativeLocation": "X=4.735 Y=0.000 Z=4.466",
                         "RelativeRotation": "Pitch=0.000 Yaw=0.000 Roll=-0.000",
                         "RelativeScale3D": "X=0.100 Y=0.100 Z=0.100",
+                        "SkeletalMeshPath": "",
                         "bAutoActive": "true",
                         "bIsActive": "true",
                         "m_Type": ""
@@ -71,6 +72,22 @@
             "ActorTickInEditor": "false",
             "Components": [
                 {
+                    "ComponentClass": "USceneComponent",
+                    "ComponentID": "USceneComponent_132",
+                    "Properties": {
+                        "AttachParentID": "nullptr",
+                        "ComponentClass": "USceneComponent",
+                        "ComponentName": "USceneComponent_132",
+                        "ComponentOwner": "ADirectionalLight_130",
+                        "ComponentOwnerClass": "ADirectionalLight",
+                        "RelativeLocation": "X=0.000 Y=0.000 Z=0.000",
+                        "RelativeRotation": "Pitch=0.000 Yaw=0.000 Roll=-0.000",
+                        "RelativeScale3D": "X=1.000 Y=1.000 Z=1.000",
+                        "bAutoActive": "true",
+                        "bIsActive": "true"
+                    }
+                },
+                {
                     "ComponentClass": "UDirectionalLightComponent",
                     "ComponentID": "UDirectionalLightComponent_0",
                     "Properties": {
@@ -84,22 +101,6 @@
                         "Direction": "X=-1.000 Y=-0.000 Z=-0.000",
                         "Intensity": "10.000000",
                         "LightColor": "R=1.000 G=1.000 B=1.000 A=1.000",
-                        "RelativeLocation": "X=0.000 Y=0.000 Z=0.000",
-                        "RelativeRotation": "Pitch=0.000 Yaw=0.000 Roll=-0.000",
-                        "RelativeScale3D": "X=1.000 Y=1.000 Z=1.000",
-                        "bAutoActive": "true",
-                        "bIsActive": "true"
-                    }
-                },
-                {
-                    "ComponentClass": "USceneComponent",
-                    "ComponentID": "USceneComponent_132",
-                    "Properties": {
-                        "AttachParentID": "nullptr",
-                        "ComponentClass": "USceneComponent",
-                        "ComponentName": "USceneComponent_132",
-                        "ComponentOwner": "ADirectionalLight_130",
-                        "ComponentOwnerClass": "ADirectionalLight",
                         "RelativeLocation": "X=0.000 Y=0.000 Z=0.000",
                         "RelativeRotation": "Pitch=0.000 Yaw=0.000 Roll=-0.000",
                         "RelativeScale3D": "X=1.000 Y=1.000 Z=1.000",

@@ -178,6 +178,11 @@
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimDataModel.cpp" />
+    <ClCompile Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimInstance.cpp" />
+    <ClCompile Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimSequence.cpp" />
+    <ClCompile Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimationAsset.cpp" />
+    <ClCompile Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimSequenceBase.cpp" />
     <ClCompile Include="Engine\Source\Runtime\InteractiveToolsFramework\BoneGizmos\ABoneGizmo.cpp" />
     <ClCompile Include="Engine\Source\Contents\Actors\TriggerBox.cpp" />
     <ClCompile Include="Engine\Source\Runtime\Core\Math\MathUtility.cpp" />
@@ -440,15 +445,25 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimDataModel.h" />
+    <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimInstance.h" />
+    <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimSequence.h" />
+    <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimationAsset.h" />
+    <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimSequenceBase.h" />
+    <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimTypes.h" />
+    <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Asset\SkeletalMeshAsset.h" />
+    <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Asset\StaticMeshAsset.h" />
     <ClInclude Include="Engine\Source\Runtime\InteractiveToolsFramework\BoneGizmos\ABoneGizmo.h" />
     <ClInclude Include="Engine\Source\Contents\Actors\TriggerBox.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Components\SkeletalMesh\SkeletalMesh.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Components\SkeletalMesh\SkeletalMeshComponent.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Components\SkeletalMesh\SkinnedMeshComponent.h" />
-    <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Engine\Asset\SkeletalMeshAsset.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Engine\FbxLoader.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Engine\ResourceManager.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Engine\SkeletalMeshEditorController.h" />
+    <ClInclude Include="Engine\Source\Runtime\Launch\BoneDefine.h" />
+    <ClInclude Include="Engine\Source\Runtime\Launch\SkeletalAnimation.h" />
+    <ClInclude Include="Engine\Source\Runtime\Launch\SkeletalDefine.h" />
     <ClInclude Include="Engine\Source\Runtime\Renderer\CameraEffectRenderPass.h" />
     <ClInclude Include="Engine\Source\Contents\Objects\DamageCameraShake.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Camera\CameraModifier.h" />
@@ -562,7 +577,6 @@
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Components\TextComponent.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Components\UTextUUID.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Engine\AssetManager.h" />
-    <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Engine\Asset\StaticMeshAsset.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Engine\EditorEngine.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Engine\Engine.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Engine\EngineTypes.h" />

@@ -387,4 +387,9 @@ struct FMath
         int b = p[xi + 1];
         return lerp(grad(a, xf), grad(b, xf - 1.0f), u);
     }
+
+    static inline int32 FloorToInt(float Value)
+    {
+        return static_cast<int32>(std::floor(Value));
+    }
 };

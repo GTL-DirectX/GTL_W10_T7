@@ -19,7 +19,7 @@
 #include "Editor/PropertyEditor/ShowFlags.h"
 #include "UnrealEd/EditorViewportClient.h"
 #include "Components/SkeletalMesh/SkeletalMeshComponent.h"
-#include "Engine/Asset/SkeletalMeshAsset.h"
+#include "Engine/Classes/Asset/SkeletalMeshAsset.h"
 
 class UEditorEngine;
 

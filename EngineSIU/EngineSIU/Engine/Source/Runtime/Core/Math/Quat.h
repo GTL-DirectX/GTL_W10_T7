@@ -11,6 +11,8 @@ struct FQuat
 {
     float W, X, Y, Z;
 
+    static const FQuat Identity;
+    
     // 기본 생성자
     explicit FQuat()
         : W(1.0f), X(0.0f), Y(0.0f), Z(0.0f)
@@ -52,6 +54,19 @@ struct FQuat
     bool Equals(const FQuat& Q, float Tolerance = KINDA_SMALL_NUMBER) const;
 
     FRotator Rotator() const;
+    
+    static FQuat Slerp(const FQuat& A, const FQuat& B, float Alpha);
+
+    float Dot(const FQuat& Other) const
+    {
+        return W * Other.W + X * Other.X + Y * Other.Y + Z * Other.Z;
+    }
+
+    // 반대 방향의 쿼터니언 생성을 위한 단항 연산자
+    FQuat operator-() const
+    {
+        return FQuat(-W, -X, -Y, -Z);
+    }
 };
 
 inline FArchive& operator<<(FArchive& Ar, FQuat& Q)

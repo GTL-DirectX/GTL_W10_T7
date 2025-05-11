@@ -4,6 +4,7 @@
 #include "Texture.h"
 #include "Container/Map.h"
 
+class UAnimSequence;
 struct FSkeletalMeshRenderData;
 struct FObjManager;
 struct FObjMaterialInfo;
@@ -60,7 +61,7 @@ private:
 public:
 
     static USkeletalMesh* LoadSkeletalMesh(const FString& FilePath);
-    static FSkeletalMeshRenderData* LoadSkeletalMeshAsset(const FString& PathFileName);
+    static USkeletalMesh* LoadSkeletalMeshAsset(const FString& PathFileName);
     static USkeletalMesh* GetSkeletalMesh(const FWString& FilePath);
 
 private:
@@ -68,6 +69,14 @@ private:
 
 #pragma endregion
 
+#pragma region Animation
+public:
+    static UAnimSequence* LoadAnimationSequence(const FString& FilePath);
+    static UAnimSequence* GetAnimationSequence(const FWString& AnimationKey);
+private:
+    inline static TMap<FWString, UAnimSequence*> AnimSequenceMap;
+#pragma endregion
+    
 #pragma region Material
 public:
     static UMaterial* CreateMaterial(FObjMaterialInfo materialInfo);
