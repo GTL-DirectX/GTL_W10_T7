@@ -982,12 +982,18 @@
     <ClInclude Include="Engine\Source\Runtime\InteractiveToolsFramework\BoneGizmos\UGizmoFrameComponent.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimTypes.h" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> main
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\UAnimDataModel.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\AnimSequence.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\UAnimationAsset.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\UAnimSequenceBase.h" />
     <ClInclude Include="Engine\Source\Runtime\Engine\Classes\Animation\UAnimInstance.h" />
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
   </ItemGroup>
   <ItemGroup>

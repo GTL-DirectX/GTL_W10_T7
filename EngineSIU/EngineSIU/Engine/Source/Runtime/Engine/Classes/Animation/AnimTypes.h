@@ -2,6 +2,11 @@
 
 #include "Define.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include "Container/Map.h"
+#include "Core/Math/Quat.h"
+>>>>>>> main
 =======
 #include "Container/Map.h"
 #include "Core/Math/Quat.h"
@@ -28,7 +33,10 @@ struct FAnimNotifyEvent
     FName NotifyName;
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> main
 
 struct FFrameRate
 {
@@ -63,4 +71,7 @@ struct FAnimationCurveData
     TMap<FName, TArray<float>> FloatCurves;  // 이름별 플로트 커브 데이터
     TMap<FName, TArray<bool>> BoolCurves;    // 이름별 불린 커브 데이터
 };
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
