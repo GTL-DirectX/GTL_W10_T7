@@ -70,7 +70,8 @@ USkeletalMesh* FFbxLoader::LoadFBXSkeletalMeshAsset(const FString& filePathName)
 
                     //b.LocalTransform = FBonePose(FMatrix::FromFbxMatrix(localT));
                     LocalTransform = FBonePose(FMatrix::FromFbxMatrix(localT));
-
+                    
+                    
                     int myIndex = bones.Num();
 
                     // Bone이랑 LocalTransform의 인덱스 보장
@@ -89,7 +90,7 @@ USkeletalMesh* FFbxLoader::LoadFBXSkeletalMeshAsset(const FString& filePathName)
     }
 
     FSkeleton* ParsedSkeleton = new FSkeleton(bones);
-    FSkeletonPose ParsedSkeletonPose(ParsedSkeleton, boneLocalPoses);;
+    FSkeletonPose ParsedSkeletonPose(ParsedSkeleton, boneLocalPoses);
 
     // 5) Mesh + Skin 데이터 파싱 (여러 메시 처리)
     {

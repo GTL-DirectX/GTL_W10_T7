@@ -10,6 +10,7 @@ enum EMovementMode
     EFlying,
     EDancing,
     EDie,
+    EFire,
 };
 
 class APawn : public AActor

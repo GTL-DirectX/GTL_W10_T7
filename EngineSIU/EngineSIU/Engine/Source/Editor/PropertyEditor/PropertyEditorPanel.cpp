@@ -485,6 +485,18 @@ void PropertyEditorPanel::RenderForSkeletalMesh(USkeletalMeshComponent* Skeletal
         {
             SkeletalMeshComp->SwitchState();
         }
+        if (ImGui::Button("Test Fire", ImVec2(128, 32)))
+        {
+            SkeletalMeshComp->TestAnimationFire();
+        }
+        if (ImGui::Button("AdditiveMode Walk", ImVec2(128, 32)))
+        {
+            SkeletalMeshComp->TestAnimationAdditiveWalking();
+        }
+        if (ImGui::Button("UnSetAdditiveMode", ImVec2(128, 32)))
+        {
+            SkeletalMeshComp->TestUnSetAdditiveMode();
+        }
         
         ImGui::TreePop();
     }

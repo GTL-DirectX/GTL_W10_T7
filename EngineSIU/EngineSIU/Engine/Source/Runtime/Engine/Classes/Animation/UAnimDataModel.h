@@ -29,6 +29,8 @@ public:
     void SetNumberOfKeys(int32 InKeys);
 
     const TArray<FBoneAnimationTrack>& GetBoneAnimationTracks() const { return BoneAnimationTracks; }
+    void SetBoneAnimationTracks(const TArray<FBoneAnimationTrack>& InBoneTrack) {BoneAnimationTracks = InBoneTrack;}
+    
     float GetPlayLength() const { return PlayLength; }
     FFrameRate GetFrameRate() const { return FrameRate; }
     int32 GetNumberOfFrames() const { return NumberOfFrames; }

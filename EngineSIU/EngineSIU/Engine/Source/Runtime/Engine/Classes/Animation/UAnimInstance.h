@@ -14,12 +14,11 @@ class UAnimInstance : public UObject
 protected:
     // 소유 컴포넌트
     USkeletalMeshComponent* OwningComponent = nullptr;
+    APawn* OwningPawn = nullptr;
 
-    std::shared_ptr<UAnimationStateMachine> AnimStateMachine = nullptr;
-
-    TQueue<UAnimSequence*> WaitSequences;
+    UAnimationStateMachine* AnimStateMachine = nullptr;
     
-    bool bIsPlaying = true;
+    TQueue<UAnimSequence*> WaitSequences;
     
 public:
     UAnimInstance();
@@ -29,8 +28,6 @@ public:
     void Update(float DeltaTime);
     virtual void NativeUpdateAnimation(float DeltaSeconds);
 
-    //void TriggerAnimNotifies(float DeltaSceonds);
-
 #pragma region Properties
     USkeletalMeshComponent* GetOwningComponent() const { return OwningComponent; }
     void SetOwningComponent(USkeletalMeshComponent* InComponent) { OwningComponent = InComponent; }
@@ -39,11 +36,8 @@ public:
     // 애니메이션 재생 제어
     void PlayAnimation(UAnimSequence* InSequence, bool bInLooping = false, bool bPlayDirect = false);
 
-    // 재생 상태 접근자
-    bool IsLooping() const;
-    bool IsPlaying() const { return bIsPlaying; }
-
-    UAnimationStateMachine* GetAnimStateMachine() const { return AnimStateMachine.get(); }
+    UAnimationStateMachine* GetAnimStateMachine() const { return AnimStateMachine; }
+    // void AddAnimStateMachine(FString StateName);
     
 #pragma endregion
 };

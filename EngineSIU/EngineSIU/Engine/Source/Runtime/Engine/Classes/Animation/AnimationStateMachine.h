@@ -7,35 +7,24 @@ class APawn;
 enum EAnimState
 {
     AS_Idle,
-    AS_Work,
+    AS_Walk,
     AS_Run,
     AS_Fly,
     AS_Dance,
     AS_Die,
+    AS_Fire,
 };
 
 class UAnimationStateMachine : public UObject
 {
 public:
-
     virtual void Initialize(APawn* InOwner);
     
     void ProcessState();
     void StartAnimSequence(UAnimSequence* InSequence, float InBlendingTime);
     void UpdateSequence(float DeltaTime, USkeletalMesh* InSkeletalMesh);
-
-    APawn* Owner;
-
-    EAnimState CurrentState;
-    EAnimState PreState;
-    
-    TMap<EAnimState, UAnimSequence*> AnimSequenceMap;
-    float BlendTime = 0.f;
-
-    TArray<FBonePose> CurrentPose;
-    
-    UAnimSequence* CurrentSequence = nullptr;
-    UAnimSequence* BlendSequence = nullptr;
+    void SetAdditiveMode(UAnimSequence* AdditiveSequence, USkeletalMesh* InSkeletalMesh);
+    void UnSetAdditiveMode(){ DifferenceSequence = nullptr; }
     
     void AddAnimSequence(EAnimState InAnimState, UAnimSequence* InAnimSequence){ AnimSequenceMap.Add(InAnimState, InAnimSequence); }
     UAnimSequence* GetAnimSequence(EAnimState InAnimState){ return AnimSequenceMap[InAnimState]; }
@@ -45,4 +34,20 @@ public:
     void SetAnimaSequence(UAnimSequence* AnimSeq) { CurrentSequence = AnimSeq; }
     
     TArray<FBonePose> GetCurrentPose() { return CurrentPose; }
+
+protected:
+    APawn* Owner;
+
+    EAnimState CurrentState;
+    EAnimState PreState;
+    
+    TMap<EAnimState, UAnimSequence*> AnimSequenceMap;
+    float BlendTime = 0.f;
+
+    TArray<FBonePose> CurrentPose;
+
+    UAnimSequence* DifferenceSequence = nullptr;
+    UAnimSequence* CurrentSequence = nullptr;
+    UAnimSequence* BlendSequence = nullptr;
+     
 };

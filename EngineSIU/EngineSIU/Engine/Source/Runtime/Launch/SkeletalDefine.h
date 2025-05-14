@@ -67,6 +67,8 @@ public:
     TArray<FBonePose> LocalTransforms;
     TArray<FMatrix> GlobalTransforms;
 
+    TArray<FBonePose> BaseLocalTransform;
+    
     // 이걸로 생성하면 LocalTransform 세팅 해주면서 InvBindTransform세팅 해줘야함.
     FSkeletonPose() = default;
 
@@ -74,6 +76,8 @@ public:
         : FSkeletonPose(InSkeleton)
     {
         LocalTransforms = InLocalTransform;
+        BaseLocalTransform = LocalTransforms;
+        
         ComputeGlobalTransforms();
         SetInvBindTransforms();
     }

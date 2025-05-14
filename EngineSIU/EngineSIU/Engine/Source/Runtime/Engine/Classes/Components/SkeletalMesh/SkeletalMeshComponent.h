@@ -38,6 +38,9 @@ public:
     void LoadAndSetAnimation(FString FileName);
 
     void TestAnimationStateMachine();
+    void TestAnimationAdditiveWalking();
+    void TestUnSetAdditiveMode();
+    void TestAnimationFire();
     void SwitchState();
 
     void PerformCPUSkinning();

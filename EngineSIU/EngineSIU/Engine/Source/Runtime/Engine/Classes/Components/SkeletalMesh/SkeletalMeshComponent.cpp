@@ -81,7 +81,6 @@ void USkeletalMeshComponent::LoadAndSetAnimation(FString FileName)
     AnimInstance.reset();
     InitializeAnimInstance(Cast<APawn>(GetOwner()));
 
-
     FString FbxPath(TEXT("Contents/Fbx/") + FileName + TEXT(".fbx"));
 
     UAnimSequence* AnimSequence = FResourceManager::LoadAnimationSequence(FbxPath);
@@ -134,6 +133,57 @@ void USkeletalMeshComponent::TestAnimationStateMachine()
     if (APawn* Actor = dynamic_cast<APawn*>(GetOwner()))
     {
         Actor->CurrentMovementMode = EDancing;
+    }
+}
+
+void USkeletalMeshComponent::TestAnimationAdditiveWalking()
+{
+    FString FbxPath = TEXT("Contents/Fbx/Walking.fbx");
+    UAnimSequence* ReferenceAnimSequence = FResourceManager::LoadAnimationSequence(FbxPath);
+    if (!ReferenceAnimSequence)
+    {
+        UE_LOG(LogLevel::Warning, TEXT("ReferenceAnimSequence 애니메이션 로드 실패."));
+        return;
+    }
+
+    float AnimSpeed = 0.5f;
+    ReferenceAnimSequence->SetRateScale(AnimSpeed);
+
+    UAnimationStateMachine* StateMachine = AnimInstance->GetAnimStateMachine();
+    
+    StateMachine->AddAnimSequence(AS_Fire, ReferenceAnimSequence);
+
+    StateMachine->SetAdditiveMode(ReferenceAnimSequence, SkeletalMesh);
+}
+
+void USkeletalMeshComponent::TestUnSetAdditiveMode()
+{
+    UAnimationStateMachine* StateMachine = AnimInstance->GetAnimStateMachine();
+    StateMachine->UnSetAdditiveMode();
+}
+
+void USkeletalMeshComponent::TestAnimationFire()
+{
+    FString FbxPath(TEXT("Contents/Fbx/FiringRifle.fbx"));
+
+    UAnimSequence* TargetAnimSequence = FResourceManager::LoadAnimationSequence(FbxPath);
+    if (!TargetAnimSequence)
+    {
+        UE_LOG(LogLevel::Warning, TEXT("TargetAnimSequence 로드 실패."));
+        UpdateGlobalPose();
+        return;
+    }
+
+    float AnimSpeed = 0.5f;
+    TargetAnimSequence->SetRateScale(AnimSpeed);
+
+    UAnimationStateMachine* StateMachine = AnimInstance->GetAnimStateMachine();
+    
+    StateMachine->AddAnimSequence(AS_Fire, TargetAnimSequence);
+  
+    if (APawn* Actor = dynamic_cast<APawn*>(GetOwner()))
+    {
+        Actor->CurrentMovementMode = EFire;
     }
 }
 

@@ -35,6 +35,7 @@ struct FQuat
     //void operator*=(const FQuat& Other);
 
     FQuat operator*(const float Scalar) const;
+
     
     // (쿼터니언) 벡터 회전
     FVector RotateVector(const FVector& Vec) const;
@@ -47,6 +48,8 @@ struct FQuat
 
     FQuat GetNormalized() const;
 
+    static FQuat Inverse(const FQuat& Q);
+    
     // 회전 각도와 축으로부터 쿼터니언 생성 (axis-angle 방식)
     static FQuat FromAxisAngle(const FVector& Axis, float Angle);
 

@@ -114,6 +114,26 @@ FQuat FQuat::GetNormalized() const
     return Result;
 }
 
+FQuat FQuat::Inverse(const FQuat& Q)
+{
+    float NormSq = Q.X * Q.X + Q.Y * Q.Y + Q.Z * Q.Z + Q.W * Q.W;
+
+    // 안전을 위해 제로 나눗셈 방지
+    if (FMath::IsNearlyZero(NormSq))
+    {
+        return Identity;
+    }
+
+    float InvNormSq = 1.0f / NormSq;
+
+    return FQuat(
+        -Q.X * InvNormSq,
+        -Q.Y * InvNormSq,
+        -Q.Z * InvNormSq,
+         Q.W * InvNormSq
+    ).GetNormalized();
+}
+
 FQuat FQuat::FromAxisAngle(const FVector& Axis, float Angle)
 {
     float halfAngle = Angle * 0.5f;

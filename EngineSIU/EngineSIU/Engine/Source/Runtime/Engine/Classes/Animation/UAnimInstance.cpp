@@ -5,6 +5,8 @@
 #include "AnimationStateMachine.h"
 #include <memory>
 
+#include "UObject/ObjectFactory.h"
+
 UAnimInstance::UAnimInstance()
 {
 }
@@ -12,21 +14,17 @@ UAnimInstance::UAnimInstance()
 void UAnimInstance::Initialize(USkeletalMeshComponent* InComponent, APawn* InOwner)
 {
     OwningComponent = InComponent;
-    
+    OwningPawn = InOwner;
+
     if (!AnimStateMachine)
     {
-        AnimStateMachine = std::make_shared<UAnimationStateMachine>();
+        AnimStateMachine = new UAnimationStateMachine();
         AnimStateMachine->Initialize(InOwner);
     }
 }
 
 void UAnimInstance::Update(float DeltaTime)
 {
-    if (!bIsPlaying)
-    {
-        return;
-    }
-    
     NativeUpdateAnimation(DeltaTime);
 }
 
@@ -63,17 +61,4 @@ void UAnimInstance::PlayAnimation(UAnimSequence* InSequence, bool bInLooping, bo
     {
         WaitSequences.Enqueue(InSequence);
     }
-}
-
-bool UAnimInstance::IsLooping() const
-{
-    if (AnimStateMachine)
-    {
-        if (AnimStateMachine->CurrentSequence)
-        {
-            return AnimStateMachine->CurrentSequence->IsLooping();
-        }
-    }
-
-    return false;
 }
