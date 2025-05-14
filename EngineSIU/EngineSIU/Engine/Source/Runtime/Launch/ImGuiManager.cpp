@@ -31,6 +31,7 @@ void UImGuiManager::Initialize(HWND hWnd, ID3D11Device* device, ID3D11DeviceCont
         ICON_SLIDER,    ICON_SLIDER + 1,
         ICON_PLUS,      ICON_PLUS + 1,
         ICON_PLAY,      ICON_PLAY + 1,
+        ICON_PIE_PAUSE, ICON_PIE_PAUSE + 1,
         ICON_STOP,      ICON_STOP + 1,
         ICON_SQUARE,    ICON_SQUARE + 1,
         0 };

@@ -232,7 +232,7 @@ void SkeletonMeshEditorPanel::RenderAnimationEditorUI()
         ImGui::PushFont(IconFont);
 
         // 재생/일시정지 토글 버튼
-        if (ImGui::Button(bPlaying ? "\ue9a8" : "\uf04b", ImVec2(28, 28))) {
+        if (ImGui::Button(bPlaying ? "\ue9a8" : "\ue99c", ImVec2(28, 28))) {
             bPlaying = !bPlaying;
             
             if (AnimInstance)

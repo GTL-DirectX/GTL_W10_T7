@@ -15,7 +15,7 @@ void APawn::PostSpawnInitialize()
     SkeletalMeshComponent = AddComponent<USkeletalMeshComponent>();
     SetRootComponent(SkeletalMeshComponent);
     SkeletalMeshComponent->InitializeAnimInstance(this);
-    SetActorTickInEditor(true);
+
 
     if (LuaScriptComponent)
     {

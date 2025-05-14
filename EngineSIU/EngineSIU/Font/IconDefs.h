@@ -17,6 +17,7 @@
 #define ICON_PLUS       0xE9C8
 
 #define ICON_PLAY        0xE9A8
+#define ICON_PIE_PAUSE   0xE99C
 #define ICON_STOP        0xE9E6
 #define ICON_SQUARE     0xE9E4
 
