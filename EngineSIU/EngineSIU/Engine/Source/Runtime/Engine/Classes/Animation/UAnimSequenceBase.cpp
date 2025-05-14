@@ -9,8 +9,8 @@ UAnimSequenceBase::UAnimSequenceBase()
     : RateScale(1.0f)
 {
     FAnimNotifyEvent f;
-    f.NotifyName = "BBUNG";
-    f.TriggerTime = .3f;
+    f.NotifyName = "Attack";
+    f.TriggerTime = .3328f;
     Notifies.Add(f);
 }
 
