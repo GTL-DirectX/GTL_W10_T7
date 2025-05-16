@@ -56,7 +56,17 @@ void UEditorEngine::Init()
         assert(AssetManager);
         AssetManager->InitAssetManager();
     }
-    LoadLevel("Saved/AutoSaves.scene");  
+    LoadLevel("Saved/AutoSaves.scene");
+
+    // FbxManager* manager = FbxManager::Create();
+    // FbxScene* scene = FbxScene::Create(manager, "Scene");
+    // FbxImporter* importer = FbxImporter::Create(manager, "");
+    // if (importer->Initialize("model.fbx", -1, manager->GetIOSettings())) {
+    //     importer->Import(scene);
+    // }
+    // importer->Destroy();
+    // manager->Destroy();
+    
 }
 
 void UEditorEngine::Release()

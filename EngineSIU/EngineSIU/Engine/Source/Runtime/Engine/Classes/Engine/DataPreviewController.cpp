@@ -31,6 +31,7 @@ void UDataPreviewController::Initialize(UAnimInstance* InAnim)
     {
         // TODO: Default Mesh로 초기화
         UE_LOG(LogLevel::Error, TEXT("InMesh is null"));
+        UE_LOG(LogLevel::Error, TEXT("InMesh is null"));
         return;
     }
 
