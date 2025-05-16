@@ -301,19 +301,10 @@ void SkeletonMeshEditorPanel::RenderAnimationEditorUI()
     // 왼쪽 컬럼: 타임라인
     ImGui::BeginChild("LeftPanel", ImVec2(leftColumnWidth, 0), false, ImGuiWindowFlags_NoScrollbar);
     {
-        // 타임라인 슬라이더
-        if (ImGui::SliderFloat("##Timeline", &CurrentTime, 0.0f, TotalDuration, "")) {
-            // 슬라이더로 시간 변경 시 애니메이션 시간도 설정
-            if (AnimInstance && AnimInstance->GetAnimStateMachine())
-            {
-                AnimInstance->GetCurrentSequence()->SetLocalTime(CurrentTime);
-            }
-        }
-
         // 타임라인 시각화 영역
         const float timelineHeight = 50.0f;
         ImVec2 timelineStart = ImGui::GetCursorScreenPos();
-        ImVec2 timelineEnd = ImVec2(timelineStart.x + leftColumnWidth - 20, timelineStart.y + timelineHeight);
+        ImVec2 timelineEnd = ImVec2(timelineStart.x + leftColumnWidth - 20, timelineStart.y + timelineHeight + 30);
 
         ImDrawList* drawList = ImGui::GetWindowDrawList();
 
